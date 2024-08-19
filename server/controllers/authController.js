@@ -92,3 +92,14 @@ export const currentUser = async (req, res) => {
         return res.status(500).json({ message: err.message, msg: "internal server error" });
     }
 }
+
+// to get all users details 
+export const getAllUsers = async (req,res)=>{
+    try{
+        const users = await userModel.find().select("-password");
+        res.status(200).json(users);
+    }
+    catch(err){
+        res.status(500).json({message:err.message,msg:"internal server error"});
+    }
+}
