@@ -5,6 +5,7 @@ import { followUnfollowUser, getSuggestedUsers, getUserProfile, updateUserProfil
 const router = Router();
 
 router.use(authenticateUser);
+
 router.get('/profile/:username',getUserProfile);
 router.get('/follow/:id',followUnfollowUser);
 router.get('/suggested',getSuggestedUsers);

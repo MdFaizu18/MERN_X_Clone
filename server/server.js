@@ -15,6 +15,7 @@ app.use(cookieParser());
 // importing routes from the routes folder 
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import postRoutes from './routes/postRoutes.js';
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -22,11 +23,12 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
-app.use('/api/auth',authRoutes);
-app.use('/api/user',userRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/posts', postRoutes);
 
 // connecting to the database
-const port = 8080;
+const port = 8088;
 app.listen(port,async()=>{
     try{
         await mongoose.connect(process.env.MONGO_URL);
