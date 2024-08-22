@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import {v2 as cloudinary} from 'cloudinary'
+import {v2 as cloudinary} from 'cloudinary';
 dotenv.config();
 
 const app = express();
@@ -16,6 +16,7 @@ app.use(cookieParser());
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import postRoutes from './routes/postRoutes.js';
+import notificationRoutes from './routes/notificationRoutes.js';
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -26,6 +27,7 @@ cloudinary.config({
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/notifications',notificationRoutes);
 
 // connecting to the database
 const port = 8088;
